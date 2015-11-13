@@ -25,15 +25,10 @@ class Elevator
   end
   
   def add_destination(floor)
+    puts "#{@name}'s destinations added floor #{floor}"
     SEMAPHORE.synchronize do
       @destinations << floor
       @status = MOVING if @status == IDLE
-    end
-  end
-  
-  def move(fromFloor, toFloor)
-    SEMAPHORE.synchronize do
-      @destinations << toFloor
     end
   end
   
